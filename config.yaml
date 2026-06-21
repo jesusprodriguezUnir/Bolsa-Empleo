@@ -1,0 +1,91 @@
+# =============================================================================
+#  Configuración de la alerta de empleo docente
+#  Edita keywords y fuentes sin tocar el código Python.
+# =============================================================================
+
+# --- Criterios de filtrado ----------------------------------------------------
+# Un enlace/convocatoria se considera RELEVANTE si su texto contiene:
+#   - al menos UNA palabra de `incluir_cualquiera`  (tipo de proceso / cuerpo)
+#   Y NO contiene ninguna de `excluir`.
+# El match es por palabra suelta, sin distinguir acentos ni mayúsculas.
+
+incluir_cualquiera:
+  # Tipo de proceso (raíz singular: el match por prefijo captura también los plurales)
+  - libre disposicion
+  - concurso de merito
+  - comision de servicio
+  - adjudicacion
+  - destinos provisionales
+  - interino
+  - interinidad
+  - vacante
+  - exterior
+  - accion educativa exterior
+  # Cuerpo / especialidad de interés
+  - maestro
+  - ingles
+  - pedagogia terapeutica
+  - audicion y lenguaje
+  - psicopedagogia
+  - orientacion educativa
+
+# Si aparece alguna de estas, se descarta (ruido habitual)
+excluir:
+  - oposiciones de secundaria
+  - tribunal
+  - cocina
+  - limpieza
+  - mantenimiento
+
+# --- Fuentes a rastrear -------------------------------------------------------
+# `tipo`:
+#   html  -> descarga la página y extrae enlaces (<a>) + titulares
+# `base` -> para resolver enlaces relativos (href="/node/123")
+fuentes:
+  - nombre: "Madrid · Novedades RRHH (docentes)"
+    tipo: html
+    url: "https://www.comunidad.madrid/educacion/novedades-direccion-general-recursos-humanos"
+    base: "https://www.comunidad.madrid"
+
+  - nombre: "Madrid · Profesorado Interino"
+    tipo: html
+    url: "https://www.comunidad.madrid/servicios/educacion/profesorado-interino"
+    base: "https://www.comunidad.madrid"
+
+  - nombre: "Madrid · Puestos Docentes Maestros 2026"
+    tipo: html
+    url: "https://sede.comunidad.madrid/oferta-empleo/puestos-docentes-maestros-2026"
+    base: "https://sede.comunidad.madrid"
+
+  # Puestos docentes en el EXTERIOR (funcionarios de carrera): concursos de méritos,
+  # comisiones de servicio, profesorado visitante, asesorías técnicas.
+  # Fuente correcta para "exterior", NO SEPIE (que solo publica Erasmus+).
+  #
+  # El portal del MEFD renderiza por JavaScript: por eso 'render: js' (navegador
+  # headless con Playwright). Las fuentes de Madrid NO lo necesitan (HTML en servidor).
+  - nombre: "Exterior · Convocatorias Acción Educativa Exterior (MEFD)"
+    tipo: html
+    render: js
+    url: "https://aee.educacionfpydeportes.gob.es/convocatorias.html"
+    base: "https://aee.educacionfpydeportes.gob.es"
+
+  - nombre: "Exterior · Plazas en el exterior (MEFD)"
+    tipo: html
+    render: js
+    url: "https://www.educacionfpydeportes.gob.es/contenidos/profesorado/no-universitarios/plazas-exterior.html"
+    base: "https://www.educacionfpydeportes.gob.es"
+
+  # NOTA: SEPIE (sepie.es) se ha RETIRADO de las fuentes: solo publica convocatorias
+  # Erasmus+ (movilidad KA1/KA2), no plazas de funcionario docente. Generaba ruido.
+  # Si en el futuro quieres vigilar Erasmus+, descomenta:
+  # - nombre: "SEPIE · Convocatoria 2026"
+  #   tipo: html
+  #   url: "http://sepie.es/convocatoria/index.html"
+  #   base: "http://sepie.es"
+
+# --- Opciones de ejecución ----------------------------------------------------
+opciones:
+  # Longitud mínima del texto de un enlace para considerarlo (descarta "Inicio", "PDF", etc.)
+  min_long_titulo: 12
+  # Tiempo máximo de espera por fuente (segundos)
+  timeout: 25

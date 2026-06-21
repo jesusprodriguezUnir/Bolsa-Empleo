@@ -1,0 +1,73 @@
+name: Alerta diaria empleo docente
+
+on:
+  # GitHub Actions usa horario UTC. Madrid = UTC+2 en verano (CEST), UTC+1 en invierno (CET).
+  # Para recibir el correo ~08:00 hora de Madrid se programan DOS horas y el propio job
+  # decide si le toca ejecutarse según la hora local real (evita duplicar correo).
+  schedule:
+    - cron: "0 6 * * *"   # 08:00 CEST (verano)
+    - cron: "0 7 * * *"   # 08:00 CET  (invierno)
+  workflow_dispatch:       # permite lanzarlo a mano desde la pestaña Actions
+
+# Necesario para que el job pueda commitear el estado (state/seen.json)
+permissions:
+  contents: write
+
+concurrency:
+  group: alerta-diaria
+  cancel-in-progress: false
+
+jobs:
+  alerta:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: ¿Son las 08:00 en Madrid?
+        id: hora
+        run: |
+          HORA_MADRID=$(TZ="Europe/Madrid" date +%H)
+          echo "Hora local Madrid: $HORA_MADRID"
+          if [ "$HORA_MADRID" = "08" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "ejecutar=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ejecutar=false" >> "$GITHUB_OUTPUT"
+            echo "No son las 08:00 en Madrid; se omite (evita correo duplicado verano/invierno)."
+          fi
+
+      - name: Setup Python
+        if: steps.hora.outputs.ejecutar == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependencias
+        if: steps.hora.outputs.ejecutar == 'true'
+        run: pip install -r requirements.txt
+
+      - name: Instalar navegador headless (Chromium para fuentes render:js)
+        if: steps.hora.outputs.ejecutar == 'true'
+        run: python -m playwright install --with-deps chromium
+
+      - name: Ejecutar alerta
+        if: steps.hora.outputs.ejecutar == 'true'
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          MAIL_TO: ${{ secrets.MAIL_TO }}
+          SEND_ALWAYS: "true"
+        run: python -m alertas
+
+      - name: Guardar estado (commit del histórico de convocatorias vistas)
+        if: steps.hora.outputs.ejecutar == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if ! git diff --quiet state/seen.json; then
+            git add state/seen.json
+            git commit -m "chore: actualizar estado de convocatorias vistas [skip ci]"
+            git push
+          else
+            echo "Sin cambios en el estado."
+          fi
