@@ -20,6 +20,49 @@ def _fecha_es() -> str:
     return datetime.now(TZ).strftime("%d/%m/%Y %H:%M")
 
 
+# Orden dentro de cada fuente: abiertas antes que próximas; y dentro, las de tu perfil.
+_ORDEN_ESTADO = {"abierta": 0, "proxima": 1}
+
+
+def _ordena(nuevos):
+    return sorted(
+        nuevos,
+        key=lambda r: (_ORDEN_ESTADO.get(r.estado, 2), not r.especialidad, r.titulo.lower()),
+    )
+
+
+def _etiqueta_txt(r) -> str:
+    partes = []
+    if r.estado == "abierta":
+        partes.append("[ABIERTA]")
+    elif r.estado == "proxima":
+        partes.append("[PRÓXIMA]")
+    if r.especialidad:
+        partes.append("[TU PERFIL]")
+    return " ".join(partes)
+
+
+def _pill(texto: str, bg: str, fg: str) -> str:
+    return (f'<span style="display:inline-block;background:{bg};color:{fg};font-size:11px;'
+            f'font-weight:bold;padding:2px 8px;border-radius:10px;margin-right:6px;'
+            f'vertical-align:middle">{texto}</span>')
+
+
+def _item_html(r) -> str:
+    pills = ""
+    if r.estado == "abierta":
+        pills += _pill("ABIERTA", "#eafaef", "#1e8e4e")
+    elif r.estado == "proxima":
+        pills += _pill("PRÓXIMA", "#fff4e0", "#b8741a")
+    if r.especialidad:
+        pills += _pill("★ TU PERFIL", "#eef2ff", "#3b4ed8")
+    plazo = (f'<div style="color:#666;font-size:13px;margin-top:2px">'
+             f'Plazo de presentación: {html.escape(r.plazo)}</div>') if r.plazo else ""
+    return (f'<li style="margin-bottom:14px;list-style:none">{pills}'
+            f'<a href="{html.escape(r.url)}" style="color:#2b7cff;text-decoration:none;'
+            f'font-weight:600">{html.escape(r.titulo)}</a>{plazo}</li>')
+
+
 def construye_cuerpo(fuentes: list[ResultadoFuente]) -> tuple[str, str, int]:
     """Devuelve (texto_plano, html, num_novedades)."""
     total_nuevos = sum(len(f.nuevos) for f in fuentes)
@@ -35,8 +78,12 @@ def construye_cuerpo(fuentes: list[ResultadoFuente]) -> tuple[str, str, int]:
     for f in fuentes:
         if f.nuevos:
             tp.append(f"## {f.nombre}")
-            for r in f.nuevos:
-                tp.append(f"  - {r.titulo}\n    {r.url}")
+            for r in _ordena(f.nuevos):
+                etq = _etiqueta_txt(r)
+                tp.append(f"  - {etq + ' ' if etq else ''}{r.titulo}")
+                if r.plazo:
+                    tp.append(f"    Plazo de presentación: {r.plazo}")
+                tp.append(f"    {r.url}")
             tp.append("")
     if fallos:
         tp.append("Fuentes con error (revisar):")
@@ -63,12 +110,10 @@ def construye_cuerpo(fuentes: list[ResultadoFuente]) -> tuple[str, str, int]:
             if not f.nuevos:
                 continue
             h.append(f'<h3 style="margin:24px 0 8px;border-bottom:1px solid #eee;'
-                     f'padding-bottom:4px">{html.escape(f.nombre)}</h3><ul style="padding-left:18px">')
-            for r in f.nuevos:
-                h.append(
-                    f'<li style="margin-bottom:10px">'
-                    f'<a href="{html.escape(r.url)}" style="color:#2b7cff;text-decoration:none">'
-                    f'{html.escape(r.titulo)}</a></li>')
+                     f'padding-bottom:4px">{html.escape(f.nombre)}</h3>'
+                     f'<ul style="padding-left:0">')
+            for r in _ordena(f.nuevos):
+                h.append(_item_html(r))
             h.append("</ul>")
 
     # Resumen por fuente (siempre)

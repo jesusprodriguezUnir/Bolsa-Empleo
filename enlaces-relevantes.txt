@@ -1,0 +1,202 @@
+﻿python.exe : 10:29:21 INFO alertas.estado | Estado cargado: 0 entradas previas
+En línea: 1 Carácter: 101
++ ... env:PYTHONIOENCODING="utf-8"; & $py -m alertas --dry-run *>&1 | Out-F ...
++                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (10:29:21 INFO a...ntradas previas:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+10:29:21 INFO alertas.fuentes | Madrid · Novedades RRHH (docentes): 188 enlaces, 63 relevantes
+10:29:21 INFO alertas.fuentes | Madrid · Profesorado Interino: 90 enlaces, 7 relevantes
+10:29:21 INFO alertas.fuentes | Madrid · Puestos Docentes Maestros 2026: 71 enlaces, 0 relevantes
+10:29:24 INFO alertas.fuentes | Exterior · Convocatorias Acción Educativa Exterior (MEFD): 79 enlaces, 9 relevantes
+10:29:34 INFO alertas.fuentes | Exterior · Plazas en el exterior (MEFD): 302 enlaces, 8 relevantes
+
+======================================================================
+Alertas de empleo docente — 21/06/2026 10:29
+
+87 novedad(es) detectada(s):
+
+## Madrid · Novedades RRHH (docentes)
+  - Procedimientos selectivos para ingreso en el Cuerpo de Maestros y para adquisición de nuevas especialidades. Prueba práctica. Parte A.
+    https://www.comunidad.madrid/educacion/documentacion-procesos-selectivos-oposiciones-2026-maestros#prueba-practica
+  - Maestros: Asignación de destinos provisionales en el inicio de curso 2026-2027. Ampliación del plazo especial de solicitudes de asignación de inicio de curso para los docentes con cambio de situación administrativa.
+    https://www.comunidad.madrid/educacion/maestros-asignacion-destinos-provisionales-inicio-curso-2026-2027#instrucciones
+  - Procedimiento selectivo para ingreso en el Cuerpo de Maestros y adquisición de nuevas especialidades. Corrección de errores en la convocatoria.
+    https://www.comunidad.madrid/servicios/educacion/procesos-selectivos-oposiciones-2026-maestros#convocatoria
+  - Procedimiento selectivo para ingreso en el Cuerpo de Maestros y adquisición de nuevas especialidades. Listas complementarias y corrección de errores de las listas definitivas de admitidos y excluidos.
+    https://www.comunidad.madrid/servicios/educacion/procesos-selectivos-oposiciones-2026-maestros#admision
+  - Adjudicación de vacantes para profesores de Religión para el curso 2026-2027. Corrección de errores en los listados.
+    https://www.comunidad.madrid/educacion/adjudicacion-vacantes-profesores-religion-2026#adjudicacion-vacantes
+  - Concurso de Méritos para el personal funcionario no docente (Grupos B/C/D). Listados definitivos.
+    https://www.comunidad.madrid/servicios/educacion/concursos-meritos-pas#listados-o56342025
+  - Procedimiento selectivo para ingreso en el Cuerpo de Maestros y adquisición de nuevas especialidades. Modificación de sedes.
+    https://www.comunidad.madrid/servicios/educacion/procesos-selectivos-oposiciones-2026-maestros#sedes-distribucion-opositores-tribunal
+  - Enseñanzas Artísticas Superiores. Asignación de destinos provisionales en el inicio de curso 2026-2027. Instrucciones.
+    https://www.comunidad.madrid/educacion/e-artisticas-superiores-asignacion-destinos-provisionales-inicio-curso-2026-2027#instrucciones
+  - Personal docente interino. Nota informativa: Última convocatoria de asignación de destinos para el curso 2025-2026.
+    https://www.comunidad.madrid/servicios/educacion/profesorado-interino-2025-2026#nota-informativa
+  - Formación de las listas de aspirantes a desempeñar puestos docentes en régimen de interinidad durante el curso 2026-2027. Corrección de errores.
+    https://www.comunidad.madrid/educacion/listas-interinos-docentes-2026-2027#normativa
+  - Procedimiento selectivo para ingreso en el Cuerpo de Maestros y adquisición de nuevas especialidades. Ampliación del número de plazas convocadas.
+    https://www.comunidad.madrid/servicios/educacion/procesos-selectivos-oposiciones-2026-maestros#plazas
+  - Profesores Secundaria, FP y RE: Asignación de destinos provisionales en el inicio de curso 2026-2027. Nota informativa.
+    https://www.comunidad.madrid/educacion/secundaria-fp-re-asignacion-destinos-provisionales-inicio-curso-2026-2027#nota-informativa
+  - Maestros: Asignación de destinos provisionales en el inicio de curso 2026-2027. Nota informativa.
+    https://www.comunidad.madrid/educacion/maestros-asignacion-destinos-provisionales-inicio-curso-2026-2027#nota-informativa
+  - Listas de aspirantes a desempeñar puestos docentes en régimen de interinidad. Aspirantes que han causado baja.
+    https://www.comunidad.madrid/educacion/listas-interinos-docentes-2025-2026#aspirantes-han-causado-baja
+  - Listas extraordinarias de interinos permanentemente abiertas en especialidades del Cuerpo de Catedráticos de Música y Artes Escénicas. Citaciones de la prueba práctica de determinadas especialidades.
+    https://www.comunidad.madrid/educacion/listas-extraordinarias-permanentemente-abiertas-profesores-interinos-catedraticos-musica-artes-escenicas#citaciones-pruebas-practicas
+  - Listas extraordinarias de interinos permanentemente abiertas en especialidades del Cuerpo de Catedráticos de Música y Artes Escénicas. Listas de nuevos aspirantes admitidos y no admitidos en determinadas especialidades.
+    https://www.comunidad.madrid/educacion/listas-extraordinarias-permanentemente-abiertas-profesores-interinos-catedraticos-musica-artes-escenicas#admision-determinadas-especialidades-publicacion-listados
+  - Acreditación para impartir el currículo de Inglés Avanzado. Acreditados por superar la prueba de aptitud.
+    https://www.comunidad.madrid/servicios/educacion/acreditacion-ingles-avanzado-2026#aptos
+  - Procedimiento selectivo para ingreso en el Cuerpo de Maestros y adquisición de nuevas especialidades. Listas provisionales de puntuación alcanzada en la fase de concurso.
+    https://www.comunidad.madrid/servicios/educacion/procesos-selectivos-oposiciones-2026-maestros#baremo
+  - Concurso de traslados del Cuerpo de Maestros. Emplazamiento.
+    https://www.bocm.es/boletin/CM_Orden_BOCM/2026/05/20/BOCM-20260520-36.PDF
+  - Selección de directores. Listados definitivos de admitidos y excluidos (Nueva relación de vacantes)
+    https://www.comunidad.madrid/servicios/educacion/renovacion-seleccion-directores-2025#nuevas-vacantes-admision
+  - Selección de directores. Comisiones de selección. (Nueva relación de vacantes)
+    https://www.comunidad.madrid/servicios/educacion/renovacion-seleccion-directores-2025#nuevas-vacantes-comisiones-seleccion
+  - Concurso de traslados del Cuerpo de Maestros. Emplazamiento.
+    https://www.bocm.es/boletin/CM_Orden_BOCM/2026/05/11/BOCM-20260511-27.PDF
+  - Concurso de traslados del Cuerpo de Maestros. Adjudicación definitiva de destinos.
+    https://www.comunidad.madrid/educacion/concurso-traslados-maestros#adjudicacion-destinos
+  - Concurso de traslados de los Cuerpos de Secundaria, FP y RE. Adjudicación definitiva de destinos.
+    https://www.comunidad.madrid/servicios/educacion/concurso-traslados-profesores-secundaria-formacion-profesional-regimen-especial-2025#adjudicacion-destinos
+  - Concurso de traslados de Inspectores. Adjudicación definitiva de destinos.
+    https://www.comunidad.madrid/servicios/educacion/concurso-traslados-inspectores-2025#adjudicacion-destinos
+  - Listas extraordinarias de interinos permanentemente abiertas. Listas de nuevos aspirantes admitidos y no admitidos en determinadas especialidades.
+    https://www.comunidad.madrid/servicios/educacion/listas-extraordinarias-permanentemente-abiertas-profesores-interinos#admision-determinadas-especialidades-publicacion-listados
+  - Listas extraordinarias de interinos permanentemente abiertas en especialidades del Cuerpo de Catedráticos de Música y Artes Escénicas. Citación para prueba práctica.
+    https://www.comunidad.madrid/educacion/listas-extraordinarias-permanentemente-abiertas-profesores-interinos-catedraticos-musica-artes-escenicas#citaciones-prueba-practica
+  - Adjudicación de vacantes para profesores de Religión para el curso 2026. Convocatoria.
+    https://www.comunidad.madrid/educacion/adjudicacion-vacantes-profesores-religion-2026#convocatoria
+  - Concurso de traslados del Cuerpo de Maestros. Listas definitivas de vacantes.
+    https://www.comunidad.madrid/servicios/educacion/concurso-traslados-maestros-2025#listado-vacantes
+  - Concurso de traslados de Inspectores. Lista definitiva de vacantes.
+    https://www.comunidad.madrid/servicios/educacion/concurso-traslados-inspectores-2025#listado-vacantes
+  - Concurso de traslados de los Cuerpos de Secundaria, FP y RE. Lista definitiva de vacantes.
+    https://www.comunidad.madrid/servicios/educacion/concurso-traslados-profesores-secundaria-formacion-profesional-regimen-especial-2025#listados-vacantes
+  - Acreditación de Inglés Avanzado. Listados definitivos de admitidos y excluidos. Citaciones. Entrega de la unidad didáctica.
+    https://www.comunidad.madrid/servicios/educacion/acreditacion-ingles-avanzado-2026#prueba-admision
+  - Acreditación de Inglés Avanzado. Comisiones evaluadoras.
+    https://www.comunidad.madrid/servicios/educacion/acreditacion-ingles-avanzado-2026#comisiones-evaluadoras
+  - Listas extraordinarias de interinos permanentemente abiertas en especialidades del Cuerpo de Catedráticos de Música y Artes Escénicas. Citación para prueba práctica.
+    https://www.comunidad.madrid/servicios/educacion/listas-extraordinarias-permanentemente-abiertas-profesores-interinos-catedraticos-musica-artes-escenicas#citaciones-prueba-practica
+  - Listas extraordinarias de interinos permanentemente abiertas. Listas de nuevos aspirantes admitidos y no admitidos en determinadas especialidades.
+    https://www.comunidad.madrid/servicios/educacion/listas-extraordinarias-permanentemente-abiertas-profesores-interinos#resolucion-260413
+  - Listas extraordinarias de interinos permanentemente abiertas en especialidades del Cuerpo de Catedráticos de Música y Artes Escénicas. Listas de nuevos aspirantes admitidos y no admitidos en determinadas especialidades.
+    https://www.comunidad.madrid/servicios/educacion/listas-extraordinarias-permanentemente-abiertas-profesores-interinos-catedraticos-musica-artes-escenicas#resolucion-260413
+  - Concurso de traslados del Cuerpo de Maestros. Listado de renuncias a la adjudicación provisional de destinos.
+    https://www.comunidad.madrid/servicios/educacion/concurso-traslados-maestros-2025#adjudicacion-destinos
+  - Formación de las listas de aspirantes a desempeñar puestos docentes en régimen de interinidad durante el curso 2025-2026. Modificación del anexo I.
+    https://www.comunidad.madrid/servicios/educacion/listas-interinos-docentes#normativa
+  - Listas extraordinarias de interinos permanentemente abiertas en especialidades del Cuerpo de Catedráticos de Música y Artes Escénicas. Convocatoria de determinadas especialidades.
+    https://www.comunidad.madrid/servicios/educacion/listas-extraordinarias-permanentemente-abiertas-profesores-interinos-catedraticos-musica-artes-escenicas#convocatoria-marzo-2026
+  - Listas extraordinarias de interinos permanentemente abiertas. Convocatoria de determinadas especialidades.
+    https://www.comunidad.madrid/servicios/educacion/listas-extraordinarias-permanentemente-abiertas-profesores-interinos#convocatoria-marzo-2026-2
+  - Concurso de traslados del Cuerpo de Maestros. Emplazamiento.
+    https://www.bocm.es/boletin/CM_Orden_BOCM/2026/03/31/BOCM-20260331-35.PDF
+  - Listas extraordinarias de interinos permanentemente abiertas. Convocatoria de determinadas especialidades.
+    https://www.comunidad.madrid/servicios/educacion/listas-extraordinarias-permanentemente-abiertas-profesores-interinos#convocatoria-marzo-2026
+  - Listas extraordinarias de interinos permanentemente abiertas. Listas de nuevos aspirantes admitidos y no admitidos en determinadas especialidades.
+    https://www.comunidad.madrid/servicios/educacion/listas-extraordinarias-permanentemente-abiertas-profesores-interinos#resolucion-260324
+  - Comisiones de servicio de carácter personal (humanitarias). Regulación.
+    https://www.comunidad.madrid/servicios/educacion/comisiones-servicio-caracter-personal-humanitarias-2026#regulacion
+  - Listas de aspirantes a desempeñar puestos docentes en régimen de interinidad. Aspirantes que han causado baja. Corrección de errores.
+    https://www.comunidad.madrid/servicios/educacion/listas-interinos-docentes-2025-2026#aspirantes-han-causado-baja
+  - Personal docente interino. Nota informativa: Llamamientos de asignación de destinos.
+    https://www.comunidad.madrid/servicios/educacion/profesorado-interino-2025-2026#nota-informativa-2
+  - Selección de directores. Nuevas vacantes. Convocatoria.
+    https://www.comunidad.madrid/servicios/educacion/renovacion-seleccion-directores-2025#nuevas-vacantes-convocatoria
+  - Listas extraordinarias de interinos permanentemente abiertas. Listas de nuevos aspirantes admitidos y no admitidos en determinadas especialidades.
+    https://www.comunidad.madrid/servicios/educacion/listas-extraordinarias-permanentemente-abiertas-profesores-interinos#resolucion-260310
+  - Acreditación de Inglés Avanzado. Convocatoria.
+    https://www.comunidad.madrid/servicios/educacion/acreditacion-ingles-avanzado-2026#convocatoria
+  - Listas extraordinarias de interinos permanentemente abiertas. Convocatoria de determinadas especialidades.
+    https://www.comunidad.madrid/servicios/educacion/listas-extraordinarias-permanentemente-abiertas-profesores-interinos#convocatoria-febrero-2026
+  - Listas extraordinarias de interinos permanentemente abiertas en especialidades del Cuerpo de Catedráticos de Música y Artes Escénicas. Listas de nuevos aspirantes admitidos y no admitidos en determinadas especialidades.
+    https://www.comunidad.madrid/servicios/educacion/listas-extraordinarias-permanentemente-abiertas-profesores-interinos-catedraticos-musica-artes-escenicas#resolucion-260220
+  - Listas extraordinarias de interinos permanentemente abiertas. Listas de nuevos aspirantes admitidos y no admitidos en determinadas especialidades.
+    https://www.comunidad.madrid/servicios/educacion/listas-extraordinarias-permanentemente-abiertas-profesores-interinos#resolucion-260220
+  - Listas extraordinarias de interinos permanentemente abiertas en especialidades del Cuerpo de Catedráticos de Música y Artes Escénicas. Listas de nuevos aspirantes admitidos y no admitidos en determinadas especialidades.
+    https://www.comunidad.madrid/servicios/educacion/listas-extraordinarias-permanentemente-abiertas-profesores-interinos-catedraticos-musica-artes-escenicas#resolucion-260216
+  - Proceso selectivo para ingreso en el cuerpo de Maestros y para adquisición de nuevas especialidades. Convocatoria.
+    https://www.comunidad.madrid/servicios/educacion/procesos-selectivos-oposiciones-2026-maestros
+  - Listas extraordinarias de interinos permanentemente abiertas. Listas de nuevos aspirantes admitidos y no admitidos en determinadas especialidades.
+    https://www.comunidad.madrid/servicios/educacion/listas-extraordinarias-permanentemente-abiertas-profesores-interinos#resolucion-260209
+  - Listas extraordinarias de interinos permanentemente abiertas en especialidades del Cuerpo de Catedráticos de Música y Artes Escénicas. Listas de nuevos aspirantes admitidos y no admitidos en determinadas especialidades.
+    https://www.comunidad.madrid/servicios/educacion/listas-extraordinarias-permanentemente-abiertas-profesores-interinos-catedraticos-musica-artes-escenicas#resolucion-260209
+  - Concurso de traslados del Cuerpo de Maestros. Listados provisionales de admitidos, excluidos y baremo provisional.
+    https://www.comunidad.madrid/servicios/educacion/concurso-traslados-maestros-2025#admitidos-excluidos-baremo
+  - Listas extraordinarias de interinos permanentemente abiertas. Convocatoria de determinadas especialidades.
+    https://www.comunidad.madrid/servicios/educacion/listas-extraordinarias-permanentemente-abiertas-profesores-interinos#convocatoria-enero-2026
+  - Listas extraordinarias de interinos permanentemente abiertas en especialidades del Cuerpo de Catedráticos de Música y Artes Escénicas. Listas de nuevos aspirantes admitidos y no admitidos en determinadas especialidades.
+    https://www.comunidad.madrid/servicios/educacion/listas-extraordinarias-permanentemente-abiertas-profesores-interinos-catedraticos-musica-artes-escenicas#resolucion-260127
+  - Listas extraordinarias de interinos permanentemente abiertas. Listas de nuevos aspirantes admitidos y no admitidos en determinadas especialidades.
+    https://www.comunidad.madrid/servicios/educacion/listas-extraordinarias-permanentemente-abiertas-profesores-interinos#resolucion-260127
+  - Listas extraordinarias de interinos permanentemente abiertas. Listas de nuevos aspirantes admitidos y no admitidos en determinadas especialidades.
+    https://www.comunidad.madrid/servicios/educacion/listas-extraordinarias-permanentemente-abiertas-profesores-interinos#resolucion-260119
+  - Listas extraordinarias de interinos permanentemente abiertas en especialidades del Cuerpo de Catedráticos de Música y Artes Escénicas. Listas de nuevos aspirantes admitidos y no admitidos en determinadas especialidades.
+    https://www.comunidad.madrid/servicios/educacion/listas-extraordinarias-permanentemente-abiertas-profesores-interinos-catedraticos-musica-artes-escenicas#resolucion-260113
+  - Listas extraordinarias de interinos permanentemente abiertas. Listas de nuevos aspirantes admitidos y no admitidos en determinadas especialidades.
+    https://www.comunidad.madrid/servicios/educacion/listas-extraordinarias-permanentemente-abiertas-profesores-interinos#resolucion-260113
+
+## Madrid · Profesorado Interino
+  - Llamamientos de asignación de destinos al personal docente interino (marzo y abril 2026)
+    https://www.comunidad.madrid/docs/assets/2026/04/09/rh15_3575_ni_ap_padi_260318.pdf?VersionId=GpOHDZvtWCp9310iweYHQWkQ_q1aSjjp
+  - Llamamientos de asignación de destinos al personal docente interino (diciembre 2025 y enero 2026)
+    https://www.comunidad.madrid/docs/assets/2026/01/12/rh15_3575_nota_inf_ap_padi_251211.pdf
+  - Profesorado Interino (2026-2027)
+    https://www.comunidad.madrid/educacion/profesorado-interino-2026-2027
+  - Información para Profesores Interinos publicada durante el curso 2024-2025
+    https://www.comunidad.madrid/servicios/educacion/profesorado-interino-2024-2025
+  - Información para Profesores Interinos publicada durante el curso 2023-2024
+    https://www.comunidad.madrid/servicios/educacion/profesorado-interino-2023-2024
+  - Información para Profesores Interinos publicada durante el curso 2022-2023
+    https://www.comunidad.madrid/servicios/educacion/profesorado-interino-2022-2023
+  - Información para Profesores Interinos publicada durante el curso 2021-2022
+    https://www.comunidad.madrid/servicios/educacion/profesorado-interino-2021-2022
+
+## Exterior · Convocatorias Acción Educativa Exterior (MEFD)
+  - Acción Educativa Exterior
+    https://aee.educacionfpydeportes.gob.es/actualidad/formacion-profesorado/2026/cursos-verano-2026.html
+  - Acción Educativa Exterior
+    https://www.educacionfpydeportes.gob.es/servicios-al-ciudadano/catalogo/general/99/998188/ficha/998188-2026-2027.html
+  - Unidad de Acción Educativa Exterior
+    https://www.funciona.es/movilidadLaboral/action/plazas/VerDetalleOferta?cd=55113
+  - Unidad de Acción Educativa Exterior
+    https://aee.educacionfpydeportes.gob.es/dam/jcr:f452695c-7b01-494a-9665-4523f530db9d/anuncio-listado-empresas-mudanzas.pdf
+  - Concurso de méritos para la provisión de puestos vacantes de asesores técnicos y asesoras técnicas en el exterior por funcionarios de carrera
+    https://www.educacionfpydeportes.gob.es/servicios-al-ciudadano/catalogo/profesorado/convocatorias-para-el-extranjero/concurso-asesores-exterior.html
+  - Concurso de méritos para la provisión de puestos vacantes de personal docente en el exterior por funcionarios de carrera
+    https://www.educacionfpydeportes.gob.es/servicios-al-ciudadano/catalogo/profesorado/convocatorias-para-el-extranjero/concurso-profesores-exterior.html
+  - Profesores interinos en programas educativos en el exterior
+    https://www.educacionfpydeportes.gob.es/servicios-al-ciudadano/catalogo/profesorado/convocatorias-para-el-extranjero/programas-educativos-interinos-exterior.html
+  - Programa de formación del profesorado extranjero de español que ejerce en el exterior
+    https://www.educacionfpydeportes.gob.es/servicios-al-ciudadano/catalogo/profesorado/convocatorias-para-extranjeros/cursos-verano-universidades-ejercen-exterior.html
+  - Convocatorias de la Acción Educativa Exterior
+    https://aee.educacionfpydeportes.gob.es/dam/jcr:1b7d0807-de6d-47ca-9e39-4f5dd6f7cd84/convocatorias-resoluciones.jpg
+
+## Exterior · Plazas en el exterior (MEFD)
+  - Acción educativa en el exterior
+    https://www.educacionfpydeportes.gob.es/contenidos/ba/actividad-internacional/oficinas-centro-exterior.html
+10:29:34 INFO alertas | [dry-run] No se envía correo. Estado NO se modifica.
+  - Admisión y matriculación de alumnos/as en los Centros de Titularidad del Estado Español en el exterior
+    https://www.educacionfpydeportes.gob.es/servicios-al-ciudadano/catalogo/estudiantes/admision-matriculacion-pruebas-acceso/admision-en-centros-en-exterior.html
+  - Programa Europrof: capacitación lingüística y pedagógica en español para el profesorado extranjero que ejerce en el exterior
+    https://www.educacionfpydeportes.gob.es/servicios-al-ciudadano/catalogo/profesorado/convocatorias-para-extranjeros/europrof.html
+  - Relación con el exterior
+    https://www.educacionfpydeportes.gob.es/servicios-al-ciudadano/estadisticas/exterior.html
+  - Acción educativa en el exterior
+    https://www.educacionfpydeportes.gob.es/servicios-al-ciudadano/estadisticas/exterior/accion.html
+  - Prórrogas y comisiones de evaluación de personal funcionario docente en el Exterior
+    https://www.educacionfpydeportes.gob.es/contenidos/profesorado/no-universitarios/funcionarios-docentes/prorrogas-comisiones.html
+  - Red de oficinas y centros en el exterior
+    https://www.educacionfpydeportes.gob.es/contenidos/centros-docentes/oficinas-centros-exterior.html
+  - El Ministerio en el exterior
+    https://www.educacionfpydeportes.gob.es/contenidos/profesorado/profesorado-en-el-extranjero/el-ministerio-en-el-exterior.html
+
+======================================================================

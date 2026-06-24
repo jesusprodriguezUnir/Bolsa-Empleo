@@ -8,7 +8,16 @@ from urllib.parse import urljoin
 import requests
 from bs4 import BeautifulSoup
 
-from .modelo import Resultado, ResultadoFuente, normaliza
+from datetime import datetime
+from zoneinfo import ZoneInfo
+
+from .comisiones import extrae_convocatorias
+from .modelo import Resultado, ResultadoFuente, contiene as _contiene, normaliza
+
+TZ = ZoneInfo("Europe/Madrid")
+
+# Estados de vigencia que SÍ se notifican (decisión: abiertas + próximas a abrir).
+ESTADOS_NOTIFICABLES = {"abierta", "proxima"}
 
 log = logging.getLogger("alertas.fuentes")
 
@@ -24,19 +33,8 @@ HEADERS = {
 }
 
 
-def _contiene(texto_norm: str, keyword: str) -> bool:
-    """Match por PREFIJO de palabra, token a token.
-
-    Cada palabra de la keyword admite sufijos (plurales/derivados) pero debe empezar
-    en límite de palabra. Así:
-      - 'interino'            casa 'interinos', 'interinidad'
-      - 'comision de servicio' casa 'comisiones de servicio'
-      - 'maestro'            casa 'maestros'
-    pero 'al'/'pt' NO casarían dentro de 'portal'/'apto' (no hay límite de palabra antes).
-    """
-    tokens = normaliza(keyword).split()
-    patron = r"\b" + r"\w*\s+".join(re.escape(t) for t in tokens) + r"\w*"
-    return re.search(patron, texto_norm) is not None
+# El match por prefijo de palabra vive en modelo.contiene (importado como _contiene),
+# para compartirlo con el extractor de comisiones sin duplicar la lógica.
 
 
 def es_relevante(titulo: str, incluir: list[str], excluir: list[str]) -> bool:
@@ -102,23 +100,48 @@ def procesa_fuente(fuente: dict, incluir: list[str], excluir: list[str],
     nombre = fuente["nombre"]
     timeout = opciones.get("timeout", 25)
     usa_js = fuente.get("render") == "js"
+    es_comisiones = fuente.get("tipo") == "comisiones"
     try:
         html = (_descarga_playwright(fuente["url"], timeout) if usa_js
                 else _descarga_requests(fuente["url"], timeout))
+        base = fuente.get("base", fuente["url"])
 
-        enlaces = extrae_enlaces(
-            html, fuente.get("base", fuente["url"]),
-            opciones.get("min_long_titulo", 12),
-        )
-        relevantes = [
-            Resultado(fuente=nombre, titulo=t, url=u)
-            for (t, u) in enlaces
-            if es_relevante(t, incluir, excluir)
-        ]
-        log.info("%s: %d enlaces, %d relevantes", nombre, len(enlaces), len(relevantes))
+        if es_comisiones:
+            relevantes = _procesa_comisiones(html, base, nombre)
+        else:
+            enlaces = extrae_enlaces(html, base, opciones.get("min_long_titulo", 12))
+            relevantes = [
+                Resultado(fuente=nombre, titulo=t, url=u)
+                for (t, u) in enlaces
+                if es_relevante(t, incluir, excluir)
+            ]
+        log.info("%s: %d relevante(s)", nombre, len(relevantes))
         return ResultadoFuente(nombre=nombre, ok=True,
                                nuevos=relevantes, total_relevantes=len(relevantes))
 
     except Exception as exc:  # incluye RequestException y errores de Playwright
         log.warning("Fallo en fuente '%s': %s", nombre, exc)
         return ResultadoFuente(nombre=nombre, ok=False, error=str(exc))
+
+
+def _procesa_comisiones(html: str, base: str, nombre: str) -> list[Resultado]:
+    """Convierte convocatorias con plazo en Resultados notificables (abiertas + próximas).
+
+    El `dedup_key` incluye el estado: así una convocatoria vista como 'proxima' se vuelve
+    a notificar cuando pasa a 'abierta'.
+    """
+    hoy = datetime.now(TZ).date()
+    salida: list[Resultado] = []
+    for c in extrae_convocatorias(html, base, hoy):
+        if c.estado not in ESTADOS_NOTIFICABLES:
+            continue
+        salida.append(Resultado(
+            fuente=nombre,
+            titulo=c.titulo,
+            url=c.url,
+            estado=c.estado,
+            plazo=c.plazo,
+            especialidad=c.especialidad,
+            dedup_key=f"{c.url}|{c.estado}",
+        ))
+    return salida

@@ -39,23 +39,29 @@ excluir:
 
 # --- Fuentes a rastrear -------------------------------------------------------
 # `tipo`:
-#   html  -> descarga la página y extrae enlaces (<a>) + titulares
+#   comisiones -> extractor CON VIGENCIA: detecta cada oferta + su "Plazo de
+#                 presentación de solicitudes del X al Y", clasifica abierta/próxima/
+#                 caducada y SOLO notifica abiertas + próximas. Descarta el histórico
+#                 (acordeón) automáticamente porque no lleva línea de plazo. Las
+#                 especialidades (inglés/PT/psicopedagogía) NO filtran aquí: se DESTACAN.
+#   html       -> extractor genérico: enlaces (<a>) filtrados por keywords. Para fuentes
+#                 sin patrón de plazo (exterior MEFD).
 # `base` -> para resolver enlaces relativos (href="/node/123")
+#
+# NOTA: las fuentes genéricas (novedades RRHH, profesorado interino, sede puestos) se
+# han retirado: mezclaban convocatorias caducadas y enlaces de navegación con las
+# vigentes (de ahí el ruido). El extractor `comisiones` sobre /educacion/docentes cubre
+# las comisiones de servicio reales con su plazo.
 fuentes:
-  - nombre: "Madrid · Novedades RRHH (docentes)"
-    tipo: html
-    url: "https://www.comunidad.madrid/educacion/novedades-direccion-general-recursos-humanos"
+  - nombre: "Madrid · Comisiones de servicio (docentes)"
+    tipo: comisiones
+    url: "https://www.comunidad.madrid/educacion/docentes"
     base: "https://www.comunidad.madrid"
 
-  - nombre: "Madrid · Profesorado Interino"
-    tipo: html
-    url: "https://www.comunidad.madrid/servicios/educacion/profesorado-interino"
+  - nombre: "Madrid · Puestos de libre designación (docentes)"
+    tipo: comisiones
+    url: "https://www.comunidad.madrid/servicios/educacion/libre-designacion-docentes"
     base: "https://www.comunidad.madrid"
-
-  - nombre: "Madrid · Puestos Docentes Maestros 2026"
-    tipo: html
-    url: "https://sede.comunidad.madrid/oferta-empleo/puestos-docentes-maestros-2026"
-    base: "https://sede.comunidad.madrid"
 
   # Puestos docentes en el EXTERIOR (funcionarios de carrera): concursos de méritos,
   # comisiones de servicio, profesorado visitante, asesorías técnicas.
