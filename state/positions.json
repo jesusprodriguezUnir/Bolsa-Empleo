@@ -1,0 +1,189 @@
+{
+  "actualizado": "2026-06-25T04:37:13.933450+00:00",
+  "convocatorias": [
+    {
+      "fuente": "Madrid · Comisiones de servicio (docentes)",
+      "titulo": "Oferta de plazas de Asesor Técnico Docente",
+      "url": "https://www.comunidad.madrid/docs/2026-06/rh20_ccss_dat_norte_res_260624.pdf?VersionId=geNTL2COLipOFeAF1CZa0n36ZOWR7MJB",
+      "estado": "abierta",
+      "plazo": "del 25 de junio al 1 de julio de 2026",
+      "especialidad": false
+    },
+    {
+      "fuente": "Madrid · Comisiones de servicio (docentes)",
+      "titulo": "Oferta de plazas de Asesor Técnico Docente",
+      "url": "https://www.comunidad.madrid/docs/2026-06/rh20_ccss_dat_este_res_260623.pdf?VersionId=L2o1TmpSRj_fJOa4FqHuFGgSlCqD1BEh",
+      "estado": "abierta",
+      "plazo": "del 24 al 30 de junio de 2026",
+      "especialidad": false
+    },
+    {
+      "fuente": "Madrid · Comisiones de servicio (docentes)",
+      "titulo": "Oferta de plazas de Asesor Técnico Docente",
+      "url": "https://www.comunidad.madrid/docs/2026-06/rh20_ccss_dgbil_res_260623.pdf?VersionId=2ah4TEygMuCISjKxbdqkbbl_GU.jdBq.",
+      "estado": "abierta",
+      "plazo": "del 24 al 30 de junio de 2026",
+      "especialidad": false
+    },
+    {
+      "fuente": "Madrid · Comisiones de servicio (docentes)",
+      "titulo": "Oferta de 11 plazas de profesorado",
+      "url": "https://www.comunidad.madrid/docs/2026-06/rh20_ccss_res_260622.pdf?VersionId=AVdEFwEllVGpateVMsAppE47rQE1CsoU",
+      "estado": "abierta",
+      "plazo": "del 23 al 29 de junio de 2026",
+      "especialidad": false
+    },
+    {
+      "fuente": "Madrid · Comisiones de servicio (docentes)",
+      "titulo": "Oferta de una plaza de Asesor Técnico Docente",
+      "url": "https://www.comunidad.madrid/docs/2026-06/rh20_ccss_dat_oeste_res_260622.pdf?VersionId=rW26fV.duHhqOtnSK.dfHtUQP_Mqbsd1",
+      "estado": "abierta",
+      "plazo": "del 23 al 29 de junio de 2026",
+      "especialidad": false
+    },
+    {
+      "fuente": "Madrid · Comisiones de servicio (docentes)",
+      "titulo": "Oferta de plazas de Asesor Técnico Docente",
+      "url": "https://www.comunidad.madrid/docs/2026-06/rh20_ccss_dgesfpre_res_260619.pdf?VersionId=iz90CrXO.ZUJ12cN5_NbRf2YyGvhHYC_",
+      "estado": "abierta",
+      "plazo": "del 22 al 26 de junio de 2026",
+      "especialidad": false
+    },
+    {
+      "fuente": "Exterior · Convocatorias Acción Educativa Exterior (MEFD)",
+      "titulo": "Acción Educativa Exterior",
+      "url": "https://aee.educacionfpydeportes.gob.es/actualidad/formacion-profesorado/2026/cursos-verano-2026.html",
+      "estado": null,
+      "plazo": null,
+      "especialidad": false
+    },
+    {
+      "fuente": "Exterior · Convocatorias Acción Educativa Exterior (MEFD)",
+      "titulo": "Acción Educativa Exterior",
+      "url": "https://www.educacionfpydeportes.gob.es/servicios-al-ciudadano/catalogo/general/99/998188/ficha/998188-2026-2027.html",
+      "estado": null,
+      "plazo": null,
+      "especialidad": false
+    },
+    {
+      "fuente": "Exterior · Convocatorias Acción Educativa Exterior (MEFD)",
+      "titulo": "Unidad de Acción Educativa Exterior",
+      "url": "https://www.funciona.es/movilidadLaboral/action/plazas/VerDetalleOferta?cd=55113",
+      "estado": null,
+      "plazo": null,
+      "especialidad": false
+    },
+    {
+      "fuente": "Exterior · Convocatorias Acción Educativa Exterior (MEFD)",
+      "titulo": "Unidad de Acción Educativa Exterior",
+      "url": "https://aee.educacionfpydeportes.gob.es/dam/jcr:f452695c-7b01-494a-9665-4523f530db9d/anuncio-listado-empresas-mudanzas.pdf",
+      "estado": null,
+      "plazo": null,
+      "especialidad": false
+    },
+    {
+      "fuente": "Exterior · Convocatorias Acción Educativa Exterior (MEFD)",
+      "titulo": "Concurso de méritos para la provisión de puestos vacantes de asesores técnicos y asesoras técnicas en el exterior por funcionarios de carrera",
+      "url": "https://www.educacionfpydeportes.gob.es/servicios-al-ciudadano/catalogo/profesorado/convocatorias-para-el-extranjero/concurso-asesores-exterior.html",
+      "estado": null,
+      "plazo": null,
+      "especialidad": false
+    },
+    {
+      "fuente": "Exterior · Convocatorias Acción Educativa Exterior (MEFD)",
+      "titulo": "Concurso de méritos para la provisión de puestos vacantes de personal docente en el exterior por funcionarios de carrera",
+      "url": "https://www.educacionfpydeportes.gob.es/servicios-al-ciudadano/catalogo/profesorado/convocatorias-para-el-extranjero/concurso-profesores-exterior.html",
+      "estado": null,
+      "plazo": null,
+      "especialidad": false
+    },
+    {
+      "fuente": "Exterior · Convocatorias Acción Educativa Exterior (MEFD)",
+      "titulo": "Profesores interinos en programas educativos en el exterior",
+      "url": "https://www.educacionfpydeportes.gob.es/servicios-al-ciudadano/catalogo/profesorado/convocatorias-para-el-extranjero/programas-educativos-interinos-exterior.html",
+      "estado": null,
+      "plazo": null,
+      "especialidad": false
+    },
+    {
+      "fuente": "Exterior · Convocatorias Acción Educativa Exterior (MEFD)",
+      "titulo": "Programa de formación del profesorado extranjero de español que ejerce en el exterior",
+      "url": "https://www.educacionfpydeportes.gob.es/servicios-al-ciudadano/catalogo/profesorado/convocatorias-para-extranjeros/cursos-verano-universidades-ejercen-exterior.html",
+      "estado": null,
+      "plazo": null,
+      "especialidad": false
+    },
+    {
+      "fuente": "Exterior · Convocatorias Acción Educativa Exterior (MEFD)",
+      "titulo": "Convocatorias de la Acción Educativa Exterior",
+      "url": "https://aee.educacionfpydeportes.gob.es/dam/jcr:1b7d0807-de6d-47ca-9e39-4f5dd6f7cd84/convocatorias-resoluciones.jpg",
+      "estado": null,
+      "plazo": null,
+      "especialidad": false
+    },
+    {
+      "fuente": "Exterior · Plazas en el exterior (MEFD)",
+      "titulo": "Acción educativa en el exterior",
+      "url": "https://www.educacionfpydeportes.gob.es/contenidos/ba/actividad-internacional/oficinas-centro-exterior.html",
+      "estado": null,
+      "plazo": null,
+      "especialidad": false
+    },
+    {
+      "fuente": "Exterior · Plazas en el exterior (MEFD)",
+      "titulo": "Admisión y matriculación de alumnos/as en los Centros de Titularidad del Estado Español en el exterior",
+      "url": "https://www.educacionfpydeportes.gob.es/servicios-al-ciudadano/catalogo/estudiantes/admision-matriculacion-pruebas-acceso/admision-en-centros-en-exterior.html",
+      "estado": null,
+      "plazo": null,
+      "especialidad": false
+    },
+    {
+      "fuente": "Exterior · Plazas en el exterior (MEFD)",
+      "titulo": "Programa Europrof: capacitación lingüística y pedagógica en español para el profesorado extranjero que ejerce en el exterior",
+      "url": "https://www.educacionfpydeportes.gob.es/servicios-al-ciudadano/catalogo/profesorado/convocatorias-para-extranjeros/europrof.html",
+      "estado": null,
+      "plazo": null,
+      "especialidad": false
+    },
+    {
+      "fuente": "Exterior · Plazas en el exterior (MEFD)",
+      "titulo": "Relación con el exterior",
+      "url": "https://www.educacionfpydeportes.gob.es/servicios-al-ciudadano/estadisticas/exterior.html",
+      "estado": null,
+      "plazo": null,
+      "especialidad": false
+    },
+    {
+      "fuente": "Exterior · Plazas en el exterior (MEFD)",
+      "titulo": "Acción educativa en el exterior",
+      "url": "https://www.educacionfpydeportes.gob.es/servicios-al-ciudadano/estadisticas/exterior/accion.html",
+      "estado": null,
+      "plazo": null,
+      "especialidad": false
+    },
+    {
+      "fuente": "Exterior · Plazas en el exterior (MEFD)",
+      "titulo": "Prórrogas y comisiones de evaluación de personal funcionario docente en el Exterior",
+      "url": "https://www.educacionfpydeportes.gob.es/contenidos/profesorado/no-universitarios/funcionarios-docentes/prorrogas-comisiones.html",
+      "estado": null,
+      "plazo": null,
+      "especialidad": false
+    },
+    {
+      "fuente": "Exterior · Plazas en el exterior (MEFD)",
+      "titulo": "Red de oficinas y centros en el exterior",
+      "url": "https://www.educacionfpydeportes.gob.es/contenidos/centros-docentes/oficinas-centros-exterior.html",
+      "estado": null,
+      "plazo": null,
+      "especialidad": false
+    },
+    {
+      "fuente": "Exterior · Plazas en el exterior (MEFD)",
+      "titulo": "El Ministerio en el exterior",
+      "url": "https://www.educacionfpydeportes.gob.es/contenidos/profesorado/profesorado-en-el-extranjero/el-ministerio-en-el-exterior.html",
+      "estado": null,
+      "plazo": null,
+      "especialidad": false
+    }
+  ]
+}

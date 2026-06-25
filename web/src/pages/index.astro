@@ -1,0 +1,259 @@
+---
+/**
+ * Dashboard de convocatorias de empleo docente.
+ * Lee state/positions.json (generado por el scraper) en tiempo de build.
+ * Filtros client-side con Alpine.js (sin framework extra).
+ */
+import { readFileSync } from 'fs';
+import { resolve } from 'path';
+
+// positions.json vive en repo/state/, un nivel por encima de web/
+const dataPath = resolve(process.cwd(), '..', 'state', 'positions.json');
+let data: { actualizado: string; convocatorias: Convocatoria[] };
+
+try {
+  data = JSON.parse(readFileSync(dataPath, 'utf-8'));
+} catch {
+  data = { actualizado: new Date().toISOString(), convocatorias: [] };
+}
+
+interface Convocatoria {
+  fuente: string;
+  titulo: string;
+  url: string;
+  estado: string | null;
+  plazo: string | null;
+  especialidad: boolean;
+}
+
+const { convocatorias, actualizado } = data;
+
+// Fuentes únicas para el filtro
+const fuentes = [...new Set(convocatorias.map(c => c.fuente))].sort();
+
+// Estadísticas
+const totalAbiertas  = convocatorias.filter(c => c.estado === 'abierta').length;
+const totalProximas  = convocatorias.filter(c => c.estado === 'proxima').length;
+const totalPerfil    = convocatorias.filter(c => c.especialidad).length;
+
+// Fecha de actualización formateada
+const fechaActualizado = new Intl.DateTimeFormat('es-ES', {
+  dateStyle: 'full',
+  timeStyle: 'short',
+  timeZone: 'Europe/Madrid',
+}).format(new Date(actualizado));
+
+// Serializar para Alpine.js
+const convocatoriasJSON = JSON.stringify(convocatorias);
+---
+
+<!DOCTYPE html>
+<html lang="es" x-data={`convocatoriasApp(${convocatoriasJSON})`}>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bolsa Empleo Docente</title>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body class="bg-gray-50 text-gray-900 min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-gray-200 sticky top-0 z-10 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row sm:items-center gap-3">
+      <div class="flex-1">
+        <h1 class="text-xl font-bold text-gray-900">📋 Bolsa Empleo Docente</h1>
+        <p class="text-xs text-gray-500 mt-0.5">Actualizado: {fechaActualizado}</p>
+      </div>
+
+      <!-- Filtros -->
+      <div class="flex flex-wrap gap-2 items-center">
+
+        <!-- Filtro estado -->
+        <select
+          x-model="filtroEstado"
+          class="text-sm border border-gray-300 rounded-lg px-3 py-1.5 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+          <option value="">Todos los estados</option>
+          <option value="abierta">Abiertas</option>
+          <option value="proxima">Próximas</option>
+        </select>
+
+        <!-- Filtro fuente -->
+        <select
+          x-model="filtroFuente"
+          class="text-sm border border-gray-300 rounded-lg px-3 py-1.5 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+          <option value="">Todas las fuentes</option>
+          {fuentes.map(f => <option value={f}>{f}</option>)}
+        </select>
+
+        <!-- Toggle especialidad -->
+        <button
+          @click="soloEspecialidad = !soloEspecialidad"
+          :class="soloEspecialidad
+            ? 'bg-indigo-600 text-white border-indigo-600'
+            : 'bg-white text-gray-700 border-gray-300'"
+          class="text-sm border rounded-lg px-3 py-1.5 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        >
+          ★ Tu perfil
+        </button>
+
+        <!-- Reset -->
+        <button
+          @click="resetFiltros()"
+          x-show="filtroEstado || filtroFuente || soloEspecialidad"
+          class="text-sm text-gray-500 hover:text-gray-800 underline"
+        >
+          Limpiar
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Stats -->
+  <div class="max-w-6xl mx-auto px-4 py-5">
+    <div class="grid grid-cols-3 gap-3 mb-6">
+
+      <div class="bg-white rounded-xl border border-gray-200 p-4 text-center shadow-sm">
+        <div class="text-2xl font-bold text-green-600">{totalAbiertas}</div>
+        <div class="text-xs text-gray-500 mt-1 font-medium">Abiertas</div>
+      </div>
+
+      <div class="bg-white rounded-xl border border-gray-200 p-4 text-center shadow-sm">
+        <div class="text-2xl font-bold text-amber-500">{totalProximas}</div>
+        <div class="text-xs text-gray-500 mt-1 font-medium">Próximas</div>
+      </div>
+
+      <div class="bg-white rounded-xl border border-gray-200 p-4 text-center shadow-sm">
+        <div class="text-2xl font-bold text-indigo-600">{totalPerfil}</div>
+        <div class="text-xs text-gray-500 mt-1 font-medium">Tu perfil ★</div>
+      </div>
+
+    </div>
+
+    <!-- Contador resultados filtrados -->
+    <p class="text-sm text-gray-500 mb-4">
+      Mostrando <span class="font-semibold text-gray-800" x-text="filtradas().length"></span>
+      de <span class="font-semibold">{convocatorias.length}</span> convocatoria(s)
+    </p>
+
+    <!-- Grid de cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <template x-for="c in filtradas()" :key="c.url + (c.estado || '')">
+        <div
+          class="bg-white rounded-xl border shadow-sm flex flex-col overflow-hidden transition-shadow hover:shadow-md"
+          :class="{
+            'border-green-300': c.estado === 'abierta',
+            'border-amber-300': c.estado === 'proxima',
+            'border-gray-200': !c.estado,
+          }"
+        >
+          <!-- Barra de color superior -->
+          <div
+            class="h-1 w-full"
+            :class="{
+              'bg-green-400': c.estado === 'abierta',
+              'bg-amber-400': c.estado === 'proxima',
+              'bg-gray-200':  !c.estado,
+            }"
+          ></div>
+
+          <div class="p-4 flex-1 flex flex-col gap-3">
+
+            <!-- Badges fila superior -->
+            <div class="flex flex-wrap gap-1.5 items-center">
+              <!-- Estado -->
+              <span
+                x-show="c.estado === 'abierta'"
+                class="text-xs font-semibold px-2 py-0.5 rounded-full bg-green-100 text-green-700"
+              >Abierta</span>
+              <span
+                x-show="c.estado === 'proxima'"
+                class="text-xs font-semibold px-2 py-0.5 rounded-full bg-amber-100 text-amber-700"
+              >Próxima</span>
+
+              <!-- Especialidad -->
+              <span
+                x-show="c.especialidad"
+                class="text-xs font-semibold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-700"
+              >★ Tu perfil</span>
+            </div>
+
+            <!-- Título -->
+            <p class="text-sm font-semibold text-gray-800 leading-snug" x-text="c.titulo"></p>
+
+            <!-- Plazo -->
+            <p
+              x-show="c.plazo"
+              class="text-xs text-gray-500"
+            >
+              📅 <span x-text="c.plazo"></span>
+            </p>
+
+            <!-- Fuente -->
+            <p class="text-xs text-gray-400 mt-auto" x-text="c.fuente"></p>
+          </div>
+
+          <!-- Footer link -->
+          <div class="px-4 pb-4">
+            <a
+              :href="c.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block w-full text-center text-sm font-medium text-blue-600 hover:text-blue-800 border border-blue-200 hover:border-blue-400 rounded-lg py-2 transition-colors"
+            >
+              Ver convocatoria →
+            </a>
+          </div>
+        </div>
+      </template>
+
+      <!-- Empty state -->
+      <div
+        x-show="filtradas().length === 0"
+        class="col-span-full text-center py-16 text-gray-400"
+      >
+        <div class="text-4xl mb-3">🔍</div>
+        <p class="font-medium">No hay convocatorias con los filtros actuales</p>
+        <button @click="resetFiltros()" class="mt-2 text-sm text-blue-600 hover:underline">
+          Limpiar filtros
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="max-w-6xl mx-auto px-4 py-8 text-center text-xs text-gray-400 border-t border-gray-200 mt-8">
+    Datos scrapeados de fuentes oficiales (Comunidad de Madrid · MEFD). Última actualización: {fechaActualizado}.
+  </footer>
+
+</body>
+</html>
+
+<script is:inline>
+  function convocatoriasApp(convocatorias) {
+    return {
+      convocatorias,
+      filtroEstado: 'abierta',
+      filtroFuente: '',
+      soloEspecialidad: false,
+
+      filtradas() {
+        return this.convocatorias.filter(c => {
+          if (this.soloEspecialidad && !c.especialidad) return false;
+          if (this.filtroFuente && c.fuente !== this.filtroFuente) return false;
+          if (this.filtroEstado === 'null') return !c.estado;
+          if (this.filtroEstado && c.estado !== this.filtroEstado) return false;
+          return true;
+        });
+      },
+
+      resetFiltros() {
+        this.filtroEstado = 'abierta';
+        this.filtroFuente = '';
+        this.soloEspecialidad = false;
+      },
+    };
+  }
+</script>

@@ -59,15 +59,25 @@ jobs:
           SEND_ALWAYS: "true"
         run: python -m alertas
 
-      - name: Guardar estado (commit del histórico de convocatorias vistas)
+      - name: Guardar estado y datos web (commit)
+        id: commit
         if: steps.hora.outputs.ejecutar == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if ! git diff --quiet state/seen.json; then
-            git add state/seen.json
-            git commit -m "chore: actualizar estado de convocatorias vistas [skip ci]"
-            git push
-          else
+          # Siempre añadimos positions.json (se regenera en cada ejecución)
+          git add state/seen.json state/positions.json
+          if git diff --cached --quiet; then
             echo "Sin cambios en el estado."
+            echo "cambios=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "chore: actualizar convocatorias [skip ci]"
+            git push
+            echo "cambios=true" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Redesplegar web en Vercel
+        # El commit lleva [skip ci], que Vercel respeta y no redesplegaría:
+        # forzamos el deploy con el positions.json recién pusheado vía Deploy Hook.
+        if: steps.hora.outputs.ejecutar == 'true' && steps.commit.outputs.cambios == 'true'
+        run: curl -fsS -X POST "${{ secrets.VERCEL_DEPLOY_HOOK }}"

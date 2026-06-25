@@ -7,9 +7,11 @@ Uso:
 from __future__ import annotations
 
 import argparse
+import json
 import logging
 import os
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
 import yaml
@@ -29,6 +31,7 @@ log = logging.getLogger("alertas")
 RAIZ = Path(__file__).resolve().parent.parent
 CONFIG = RAIZ / "config.yaml"
 ESTADO = RAIZ / "state" / "seen.json"
+POSITIONS = RAIZ / "state" / "positions.json"
 
 
 def cargar_config() -> dict:
@@ -44,16 +47,36 @@ def ejecutar(dry_run: bool) -> int:
 
     estado = Estado(ESTADO)
     resultados: list[ResultadoFuente] = []
+    todas_activas: list[dict] = []  # para la web: todas las posiciones vigentes
 
     for fuente in cfg["fuentes"]:
         rf = procesa_fuente(fuente, incluir, excluir, opciones)
-        # Filtra a sólo los NUEVOS respecto al estado previo
+        # Capturar TODAS las vigentes antes del filtro dedup (para la web).
+        # Se descartan las entradas sin estado (enlaces de navegación del
+        # exterior, sin plazo real): no son convocatorias accionables.
+        if rf.ok:
+            todas_activas.extend([
+                {
+                    "fuente": r.fuente,
+                    "titulo": r.titulo,
+                    "url": r.url,
+                    "estado": r.estado,
+                    "plazo": r.plazo,
+                    "especialidad": r.especialidad,
+                }
+                for r in rf.nuevos
+                if r.estado
+            ])
+        # Filtra a sólo los NUEVOS respecto al estado previo (para el correo)
         if rf.ok:
             nuevos = [r for r in rf.nuevos if estado.es_nuevo(r.id)]
             for r in nuevos:
                 estado.marca(r.id, r.titulo, r.url)
             rf.nuevos = nuevos
         resultados.append(rf)
+
+    # Exportar snapshot de posiciones activas para el dashboard web
+    _exportar_positions(todas_activas)
 
     _, _, n_novedades = construye_cuerpo(resultados)
 
@@ -79,6 +102,20 @@ def ejecutar(dry_run: bool) -> int:
     envia(remitente, password, destinatario, resultados)
     estado.guardar()  # sólo persistimos tras enviar con éxito
     return 0
+
+
+def _exportar_positions(convocatorias: list[dict]) -> None:
+    """Persiste un snapshot de las posiciones activas para el dashboard web."""
+    payload = {
+        "actualizado": datetime.now(timezone.utc).isoformat(),
+        "convocatorias": convocatorias,
+    }
+    POSITIONS.parent.mkdir(parents=True, exist_ok=True)
+    POSITIONS.write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    log.info("positions.json exportado: %d convocatorias", len(convocatorias))
 
 
 def _env(clave: str) -> str:
