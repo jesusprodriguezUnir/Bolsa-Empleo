@@ -1,12 +1,6 @@
 name: Alerta diaria empleo docente
 
 on:
-  # GitHub Actions usa horario UTC. Madrid = UTC+2 en verano (CEST), UTC+1 en invierno (CET).
-  # Para recibir el correo ~08:00 hora de Madrid se programan DOS horas y el propio job
-  # decide si le toca ejecutarse según la hora local real (evita duplicar correo).
-  schedule:
-    - cron: "0 6 * * *"   # 08:00 CEST (verano)
-    - cron: "0 7 * * *"   # 08:00 CET  (invierno)
   workflow_dispatch:       # permite lanzarlo a mano desde la pestaña Actions
 
 # Necesario para que el job pueda commitear el estado (state/seen.json)
