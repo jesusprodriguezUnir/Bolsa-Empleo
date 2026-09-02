@@ -1,4 +1,21 @@
 {
-  "actualizado": "2026-09-01T06:18:40.920647+00:00",
-  "convocatorias": []
+  "actualizado": "2026-09-02T06:22:27.288687+00:00",
+  "convocatorias": [
+    {
+      "fuente": "Madrid · Comisiones de servicio (docentes)",
+      "titulo": "Oferta de plazas de Asesor Técnico Docente",
+      "url": "https://www.comunidad.madrid/docs/2026-09/rh20_ccss_dgsec_fp_res_260901-62596412.pdf?VersionId=0M4vaeVyFIdvHhp.mN1UCSXzFb8V0RVC",
+      "estado": "abierta",
+      "plazo": "del 2 al 8 de septiembre de 2026",
+      "especialidad": false
+    },
+    {
+      "fuente": "Madrid · Comisiones de servicio (docentes)",
+      "titulo": "Oferta de plazas de Mentores de FP",
+      "url": "https://www.comunidad.madrid/docs/2026-08/rh20_ccss_mentfp_res_260901_0.pdf?VersionId=gZ9Vz9B.wQYI7gP69LeNbX3GxCnoLFcE",
+      "estado": "abierta",
+      "plazo": "del 2 al 10 de septiembre de 2026",
+      "especialidad": false
+    }
+  ]
 }
