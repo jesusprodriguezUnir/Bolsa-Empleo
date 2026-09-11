@@ -1,5 +1,5 @@
 {
-  "actualizado": "2026-09-10T06:18:10.598918+00:00",
+  "actualizado": "2026-09-11T06:17:23.668555+00:00",
   "convocatorias": [
     {
       "fuente": "Madrid · Comisiones de servicio (docentes)",
@@ -7,14 +7,6 @@
       "url": "https://www.comunidad.madrid/docs/2026-09/rh20_ccss_dgesfpre_res_260907_0.pdf?VersionId=.zKQtgA6AWFPynmFTVa19ciXN9FlaVlS",
       "estado": "abierta",
       "plazo": "del 8 al 14 de septiembre de 2026",
-      "especialidad": false
-    },
-    {
-      "fuente": "Madrid · Comisiones de servicio (docentes)",
-      "titulo": "Oferta de plazas de Mentores de FP",
-      "url": "https://www.comunidad.madrid/docs/2026-08/rh20_ccss_mentfp_res_260901_0.pdf?VersionId=gZ9Vz9B.wQYI7gP69LeNbX3GxCnoLFcE",
-      "estado": "abierta",
-      "plazo": "del 2 al 10 de septiembre de 2026",
       "especialidad": false
     }
   ]
